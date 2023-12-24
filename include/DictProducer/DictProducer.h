@@ -1,9 +1,10 @@
 #ifndef DICTPRODUCER_H
 #define DICTPRODUCER_H
 #include <string>
+#include <vector>
+#include <map>
 
-
-using std::string;
+using namespace std;
 
 class DictProducer
 {
@@ -27,7 +28,18 @@ public:
     //存储某个单词
     void pushDict(const string& word);
 
+private:
+    //语料库文件的绝对路径集合
+    vector<string> _files;
 
+    //词典
+    vector<pair<string,int>> _dict;
+
+    //分词工具
+    SplitTool * splitTool;
+
+    //词典索引
+    Map<string,set<int>> _index;
 
 };
 
