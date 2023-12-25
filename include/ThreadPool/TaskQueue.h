@@ -5,6 +5,7 @@
 #include "Task.h"
 #include "Condition.hpp"
 #include <queue>
+#include <string>
 
 using std::queue;
 using Elem = function<void()>;
