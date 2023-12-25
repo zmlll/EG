@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "SplitTool.h"
 
 using namespace std;
 
@@ -39,8 +40,7 @@ private:
     SplitTool * splitTool;
 
     //词典索引
-    Map<string,set<int>> _index;
-
+    map<string,set<int>> _index;
 };
 
 
