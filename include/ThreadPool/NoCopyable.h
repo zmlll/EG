@@ -11,6 +11,4 @@ protected:
     NoCopyable &operator= (const NoCopyable &rhs) = delete;
 
 };
-
-
 #endif
