@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "/home/zml/SearcH_Engine_zml/hiredis"
+    "cmake.sourceDirectory": "/home/zml/SearcH_Engine_zml/hiredis",
+    "files.associations": {
+        "functional": "cpp"
+    }
 }
