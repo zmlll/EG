@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "lib/cppjieba/include/cppjieba/Jieba.hpp"
+#include "Configuration.h"
 using namespace std;
 
 class SplitTool

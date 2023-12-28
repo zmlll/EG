@@ -18,18 +18,4 @@ class FileProcessor
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #endif
