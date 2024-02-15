@@ -12,9 +12,6 @@
 using namespace std;
 
 
-
-
-
 class EventLoop
 {
 private:
@@ -52,6 +49,7 @@ public:
     void setConnectionCallback(EpollCallback cb);
     void setMessageCallback(EpollCallback cb);
     void setCloseCallback(EpollCallback cb);
+    void 
 
     
     
