@@ -49,7 +49,7 @@ public:
     void setConnectionCallback(EpollCallback cb);
     void setMessageCallback(EpollCallback cb);
     void setCloseCallback(EpollCallback cb);
-    void 
+
 
     
     
