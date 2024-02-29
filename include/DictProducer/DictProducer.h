@@ -87,22 +87,4 @@ private:
     map<string,string> &_config;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #endif

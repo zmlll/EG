@@ -41,7 +41,7 @@ public:
     virtual vector<string> cut(const string &sentence,vector<string> &vec) =0;
     
     //虚析构函数
-    virtual ~SplitTool(){};
+    virtual ~SplitTool(){}
 
 };
 
@@ -68,12 +68,12 @@ private:
                 }
             }
     };
-
-private:
     Cppjieba();
-    ~Cppjieba(){} map<string,string> &_configs;
+    ~Cppjieba(){} 
+    map<string,string> &_configs;
     static SplitTool *splittool;
     static pthread_mutex_t _mutex;
+    cppjieba::Jieba _jieba;
 
 };
 
