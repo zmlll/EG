@@ -1,5 +1,6 @@
 #include "../../include/DictProducer/SplitTool.h"
 #include "../../include/SearchEngineServer/Configuration.h"
+#include <unistd.h>
 
 
 Cppjieba::Cppjieba()
@@ -64,4 +65,5 @@ void Cppjieba::destroy()
 
 SplitTool *Cppjieba::splittool = nullptr;
 pthread_mutex_t Cppjieba::_mutex;
+
 
