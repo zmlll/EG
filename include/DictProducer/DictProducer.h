@@ -79,6 +79,7 @@ private:
     vector<pair<string,int>> _dict;
     //词 词下标
     unordered_map<string,int> _dict_index;
+    
     //字 含有字的词的下标->词典索引
     map<string,set<int>> _index;
     //分词工具函数

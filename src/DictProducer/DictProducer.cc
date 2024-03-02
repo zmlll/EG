@@ -100,5 +100,88 @@ void DictProducer::buildCnDict()
 
 }
 
+void DictProducer::createIndex()
+{
+    string letter;
+    int index = 0;
+    if(_cuttor == nullptr)//此标志说明是英文
+    {
+        for(auto &it: _dict)
+        {
+            for(char c : it.first)
+            {
+                letter = c;
+                auto map_it = _index.find(letter);
+                if(map_it!=_index.end())
+                {
+                    map_it->second.insert(index);
+                }
+                else
+                {
+                    set<int> nset;
+                    nset.insert(index);
+                    _index.insert(pair<string,set<int>>(letter,nset));
+                }
+            }
+            ++index;
+        }
 
+    }
+    //中文
+    else
+    {
+        for(auto &it: _dict)
+        {
+            int i =0;
+            while(i <it.first.size())
+            {
+                unsigned char c = it.first[i];
+                if(c < 128)
+                {
+                    ++i;
+                    continue;
+                }
+                int cnt = 1;
+                for(cnt;cnt<6;++cnt)
+                {
+                    unsigned char b = c <<cnt; //移位的是utf8编码，如果第一个字节是1110 xxxx，则左移3位即0xxx xxxx，小于128，为中文
+                    if(b<128)
+                    {
+                        break;
+                    }
+                }
 
+                letter = it.first.substr(i,cnt);
+                i += cnt;
+                auto map_it = _index.find(letter);
+                if(map_it != _index.end())
+                {
+                    map_it->second.insert(index);
+                }
+                else
+                {
+                    set<int> nset;
+                    nset.insert(index);
+                    _index.insert(pair<string,set<int>>(letter,nset));
+                }
+            }
+            ++index;
+        }
+    }
+
+}
+
+void DictProducer::storeDict(const char* path)
+{
+    ofstream wfile(path);
+    if(!wfile.good())
+    {
+        cout<<"storeDict Error!" <<endl;
+        return;
+    }
+    for(auto &it:_dict)
+    {
+        wfile << it.first << " " <<it.second << endl;
+    }
+    wfile.close();
+}
