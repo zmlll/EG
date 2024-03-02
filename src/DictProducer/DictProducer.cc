@@ -69,5 +69,36 @@ void DictProducer::buildEnDict()
     }
 }
 
+void DictProducer::buildCnDict()
+{
+    string pagePath(_config["ripepage"]);
+    ifstream ifs(pagePath);
+    if(!ifs.is_open())
+    {
+        cerr << "pagePath Open error!" <<endl;
+    }
+    ifs.seekg(std::ios_base::beg);
+    string sentence;
+    vector<string> words;
+    while(getline(ifs,sentence))
+    {
+        _cuttor->cut(sentence,words);
+        for(auto &it: words)
+        {
+            auto exist = _dict_index.find(it);
+            if(exist != _dict_index.end())
+            {
+                ++(_dict[exist->second].second);
+            }
+            else
+            {
+                _dict.push_back(pair<string,int>(it,1));
+                _dict_index.insert(pair<string,int>(it,_dict.size()));
+            }
+        }
+    }
+
+}
+
 
 
