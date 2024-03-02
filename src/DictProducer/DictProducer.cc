@@ -185,3 +185,23 @@ void DictProducer::storeDict(const char* path)
     }
     wfile.close();
 }
+
+void DictProducer::storeIndex(const char* path)
+{
+    ofstream wfile(path);
+    if(!wfile.good())
+    {
+        cout << "storeIndex Error!" <<endl;
+        return;
+    }
+    for(auto &it : _index)
+    {
+        wfile<<it.first<<" ";
+        for(auto &set_it:it.second)
+        {
+            wfile<<set_it << " ";
+        }
+        wfile <<endl;
+    }
+    wfile.close();
+}
