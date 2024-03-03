@@ -33,6 +33,7 @@
         "utility": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "istream": "cpp"
     }
 }
