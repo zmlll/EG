@@ -2,8 +2,9 @@
 #define SPLITTOOL_H
 #include <vector>
 #include <string>
-#include "lib/cppjieba/include/cppjieba/Jieba.hpp"
-#include "Configuration.h"
+// #include "lib/cppjieba/include/cppjieba/Jieba.hpp"
+#include "../../lib/cppjieba/include/cppjieba/Jieba.hpp"
+// #include "Configuration.h"
 using namespace std;
 
 // class SplitTool
