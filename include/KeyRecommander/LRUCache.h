@@ -3,73 +3,47 @@
 #include <unordered_map>
 #include <list>
 #include <string>
+#include "CandidateResult.h"
+#include "../time.h"
+#include "../ProtocolParser.h"
+using nlohmann::json;
 using namespace std;
+
 
 
 class LRUCache
 {
+public:
+    friend class CacheManger;
+    friend class KeyRecommander;
+    LRUCache(int capacity =3):_capacity(capacity),_isUpdating(false){}
+    LRUCache(const LRUCache& cache);
+
+    bool get(string key,json& value);
+    void put(string key,json& value);
+
+    void writeToFile(string filename);
+    void writeToFile(string filename,string key,json value);
+    void readFromFile(string filename);
+    void update(const LRUCache&);
+    void show();
+
+    list<pair<string,json>> &getPendingUpdateList();
+    list<pair<string,json>> &getResultList();
+
+
+
 private:
     //采用hashTable进行查找
-    unordered_map<string,string> _hashMap;
-
+    unordered_map<string,list<pair<string,json>>::iterator> _umap;
     //保存键值对
-    list<string,string> _resultsList;
-
+    list<pair<string,json>> _resultList;
     //等待更新的节点信息
-    list<string,string> _pendingUpdateList;
-
-    //缓存节点的容量
+    list<pair<string,json>> _pendingUpdateList;
     int _capacity;
-
-public:
-    
-    LRUCache(int num = 100);
-
-    LRUCache(const Cache& cache);
-
-    //往缓存中添加数据
-    void addElement(const string& key,const string& value);
-
-    //从文件中读取缓存信息
-    void readFromFile(const string & filename);
-
-    //将缓存信息写入文件中
-    void writeToFile(const string& filename);
-
-    //获取待更新的节点List
-    list<string,string>& getPendingUpdateList();
-
-    //更新缓存信息
-    void update(const Cache& rhs);
-
-
-
-
-
-
-
-
-
-
+    bool _isUpdating;
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
