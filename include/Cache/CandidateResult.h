@@ -4,6 +4,8 @@
 #include <string.h>
 using namespace std;
 #include <iostream>
+
+
 struct CandidateResult
 {
 

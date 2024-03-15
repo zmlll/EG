@@ -6,10 +6,6 @@
 #include <set>  
 #include "../../include/SearchEngineServer/Configuration.h"
 using namespace std;
-/*
-字典类，
-
-*/
 class Dictionary
 {
 private:
